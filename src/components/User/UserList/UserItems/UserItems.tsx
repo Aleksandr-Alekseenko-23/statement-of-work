@@ -1,46 +1,54 @@
 import React from "react";
 import Button from "../../../Common/Button/Button";
 import { User } from "../../../../utils/types/types";
+import {
+  StyledBox,
+  StyledLogo,
+  StyledPicture,
+  StyledAvatar,
+  StyledLine,
+  StyledEllipse,
+  StyledTweets,
+  StyledFollowers,
+} from "./UserItems.styled";
+import Logo from "../../../../assets/img/Logo.svg";
+import Picture from "../../../../assets/img/picture.png";
+import Line from "../../../../assets/img/Rectangle.png";
+import Ellipse from "../../../../assets/img/Ellipse.png";
+import { useAppDispatch } from "../../../../redux/hook";
+import { updateUserById } from "../../../../redux/operations";
 
-const UserItem: React.FC<User> = ({ user, avatar, tweets, followers }) => {
+const UserItem: React.FC<User> = ({
+  avatar,
+  tweets,
+  followers,
+  id,
+  subscription,
+}) => {
+  const dispatch = useAppDispatch();
   return (
-    <li>
-      <img alt="logo" />
-      <img alt="picture" />
-      <img src={avatar} alt="avatar" />
-      <span>{tweets}TWEETS</span>
-      <span>{followers}FOLLOWERS</span>
-      <Button children="FOLLOW" />
-    </li>
+    <StyledBox>
+      <StyledLogo src={Logo} alt="Logo" />
+      <StyledPicture src={Picture} alt="Picture" />
+      <StyledLine src={Line} alt="Line" />
+      <StyledAvatar src={avatar} alt="Avatar" />
+      <StyledEllipse src={Ellipse} alt="Ellipse" />
+      <StyledTweets>{tweets} TWEETS</StyledTweets>
+      <StyledFollowers>{followers} FOLLOWERS</StyledFollowers>
+      <Button
+        children={subscription ? "FOLLOWING" : "FOLLOW"}
+        style={{
+          marginTop: "26px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          background: subscription ? "#5CD3A8" : "#EBD8FF",
+        }}
+        onClick={() =>
+          dispatch(updateUserById({ id, subscription, followers }))
+        }
+      />
+    </StyledBox>
   );
 };
 
 export default UserItem;
-
-// import Box from "../../../Common/Box";
-// import {
-//   StyledDate,
-//   StyledDesc,
-//   StyledLine,
-//   StyledLink,
-//   StyledMeta,
-//   StyledTitle,
-// } from "./NewsItems.styled";
-
-// function NewsItems({ title, url, date, description }) {
-//   return (
-//     <Box>
-//       <StyledLine />
-//       <StyledTitle>{title}</StyledTitle>
-//       <StyledDesc>{description}</StyledDesc>
-//       <StyledMeta>
-//         <StyledDate>{date || " "}</StyledDate>
-//         <StyledLink href={url} target="_blank" rel="noreferrer">
-//           Read more
-//         </StyledLink>
-//       </StyledMeta>
-//     </Box>
-//   );
-// }
-
-// export default NewsItems;

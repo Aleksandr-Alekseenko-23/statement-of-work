@@ -1,13 +1,29 @@
 export interface User {
-  id: number;
+  id: string;
   user: string;
   avatar: string;
   tweets: number;
   followers: number;
+  subscription: boolean;
 }
 
-export interface MyErrorResponse {
-  message: string;
+export interface UserState {
+  users: User[];
+  isLoading: boolean;
+  error: string | null;
+  page: number;
+  hasMore: boolean;
+}
+
+export interface UpdateUserData {
+  id: string;
+  subscription: boolean;
+  followers: number;
+}
+
+export interface Pagination {
+  page: number;
+  limit: number;
 }
 
 export interface ButtonProps {

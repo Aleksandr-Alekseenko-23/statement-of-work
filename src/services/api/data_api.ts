@@ -1,19 +1,27 @@
 import axios, { AxiosResponse } from "axios";
-import { User } from "../../utils/types/types";
+import { User, Pagination } from "../../utils/types/types";
 
 const instance = axios.create({
   baseURL: "https://6437cc07894c9029e8c63983.mockapi.io",
 });
 
-export const getDate = async (): Promise<User[]> => {
+export const getUsers = async ({
+  page,
+  limit,
+}: Pagination): Promise<User[]> => {
   const { data }: AxiosResponse<User[]> = await instance.get("/users", {
     params: {
-      page: 1,
-      limit: 8,
+      page,
+      limit,
     },
   });
+  return data;
+};
 
-  console.log("запрос", data);
-
+export const updateUser = async (user: User): Promise<User[]> => {
+  const { data }: AxiosResponse<User[]> = await instance.put(
+    `/users/${user.id}`,
+    user
+  );
   return data;
 };

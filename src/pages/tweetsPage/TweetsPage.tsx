@@ -1,32 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Alert, AlertTitle } from "@mui/material";
-import { MyErrorResponse } from "../../utils/types/types";
 import UserList from "../../components/User/UserList/UserList";
-import { getDate } from "../../services/api/data_api";
-import { User } from "../../utils/types/types";
 import Section from "../../components/Common/Section/Section";
 import Container from "../../components/Common/Container/Container";
 import Loader from "../../components/Common/Loader/Loader";
+import Button from "../../components/Common/Button/Button";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import {
+  selectUsers,
+  selectIsLoading,
+  selectError,
+  selectPage,
+  selectHasMore,
+} from "../../redux/selectors";
+import { fetchUsers } from "../../redux/operations";
 
 function TweetsPage() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<MyErrorResponse | null>(null);
+  const users = useAppSelector(selectUsers);
+  const isLoading = useAppSelector(selectIsLoading);
+  const error = useAppSelector(selectError);
+  const currentPage = useAppSelector(selectPage);
+  const hasMore = useAppSelector(selectHasMore);
+
+  const dispatch = useAppDispatch();
+
+  const handleLoadMore = (): void => {
+    dispatch(fetchUsers({ page: currentPage + 1, limit: 9 }));
+  };
 
   useEffect(() => {
-    const fetchCards = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const data = await getDate();
-        setUsers(data);
-      } catch (e: unknown) {
-        setError(e as MyErrorResponse);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchCards();
+    dispatch(fetchUsers({ page: 1, limit: 9 }));
   }, []);
 
   return (
@@ -38,7 +41,7 @@ function TweetsPage() {
             {error && (
               <Alert severity="error">
                 <AlertTitle>Error</AlertTitle>
-                {error.message}
+                {error}
               </Alert>
             )}
             {!error && !isLoading && users.length === 0 && (
@@ -48,6 +51,17 @@ function TweetsPage() {
               </Alert>
             )}
             {users.length > 0 && <UserList users={users} />}
+            {hasMore && (
+              <Button
+                onClick={handleLoadMore}
+                children="Load More"
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  marginTop: "20px",
+                }}
+              />
+            )}
           </>
         </Container>
       </Section>
