@@ -18,8 +18,8 @@ export const getUsers = async ({
   return data;
 };
 
-export const updateUser = async (user: User): Promise<User[]> => {
-  const { data }: AxiosResponse<User[]> = await instance.put(
+export const updateUser = async (user: User): Promise<User> => {
+  const { data }: AxiosResponse<User> = await instance.put(
     `/users/${user.id}`,
     user
   );

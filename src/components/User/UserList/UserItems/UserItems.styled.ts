@@ -47,11 +47,23 @@ export const StyledEllipse = styled.img`
 `;
 
 export const StyledTweets = styled.p`
-  margin-top: 62px;
+  margin-top: 10px;
   text-align: center;
 `;
 
 export const StyledFollowers = styled.p`
   margin-top: 16px;
   text-align: center;
+`;
+
+export const StyledUser = styled.p`
+  margin-top: 45px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-style: bold;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #ebd8ff;
 `;

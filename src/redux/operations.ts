@@ -20,27 +20,25 @@ export const fetchUsers = createAsyncThunk<
 });
 
 export const updateUserById = createAsyncThunk<
-  User[],
+  User,
   UpdateUserData,
   { rejectValue: string; state: { users: UserState } }
 >("users/updateUserById", async (data, { rejectWithValue, getState }) => {
   const user = getState().users.users.find((user) => user.id === data.id);
-  console.log(user);
 
   if (user) {
     const updatedUser = {
       ...user,
-      subscription: !data.subscription,
-      followers: data.followers + 1,
+      subscription: data.subscription,
+      followers: data.followers,
     };
-    console.log(updatedUser);
 
     const response = await updateUser(updatedUser);
+
     if (!response) {
       return rejectWithValue("Server Error!");
     }
     return response;
   }
-
   return rejectWithValue("No such user in the list");
 });

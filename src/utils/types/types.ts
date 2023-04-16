@@ -39,3 +39,9 @@ export interface SectionProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }
+
+export interface Links {
+  id: string;
+  label: string;
+  path: string;
+}

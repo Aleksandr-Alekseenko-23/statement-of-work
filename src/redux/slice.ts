@@ -37,13 +37,13 @@ export const userSlice = createSlice({
         state.page++;
       })
       .addCase(updateUserById.fulfilled, (state, action) => {
-        // state.isLoading = false;
-        // const { id, subscription, followers } = action.payload;
-        // const user = state.users.find((user) => user.id === id);
-        // if (user) {
-        //   user.subscription = subscription;
-        //   user.followers = followers;
-        // }
+        state.isLoading = false;
+        const { id, subscription, followers } = action.payload;
+        const user = state.users.find((user) => user.id === id);
+        if (user) {
+          user.subscription = subscription;
+          user.followers = followers;
+        }
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.isLoading = false;

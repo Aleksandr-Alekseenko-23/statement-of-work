@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import Tweetspage from "../pages/tweetsPage/TweetsPage";
+import React from "react";
+import AppRoutes from "../routes/Routes";
 
 const App: React.FC = () => {
-  return <Tweetspage />;
+  return <AppRoutes />;
 };
 
 export default App;

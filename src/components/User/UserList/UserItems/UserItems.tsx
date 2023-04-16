@@ -10,6 +10,7 @@ import {
   StyledEllipse,
   StyledTweets,
   StyledFollowers,
+  StyledUser,
 } from "./UserItems.styled";
 import Logo from "../../../../assets/img/Logo.svg";
 import Picture from "../../../../assets/img/picture.png";
@@ -19,6 +20,7 @@ import { useAppDispatch } from "../../../../redux/hook";
 import { updateUserById } from "../../../../redux/operations";
 
 const UserItem: React.FC<User> = ({
+  user,
   avatar,
   tweets,
   followers,
@@ -26,6 +28,23 @@ const UserItem: React.FC<User> = ({
   subscription,
 }) => {
   const dispatch = useAppDispatch();
+
+  const handleFollowClick = (): void => {
+    const newSubscription = !subscription;
+    const newFollowers = newSubscription ? followers + 1 : followers - 1;
+    dispatch(
+      updateUserById({
+        id,
+        subscription: newSubscription,
+        followers: newFollowers,
+      })
+    );
+  };
+
+  const formattedFollowers = followers.toLocaleString("en-US", {
+    useGrouping: true,
+  });
+
   return (
     <StyledBox>
       <StyledLogo src={Logo} alt="Logo" />
@@ -33,8 +52,9 @@ const UserItem: React.FC<User> = ({
       <StyledLine src={Line} alt="Line" />
       <StyledAvatar src={avatar} alt="Avatar" />
       <StyledEllipse src={Ellipse} alt="Ellipse" />
+      <StyledUser>{user}</StyledUser>
       <StyledTweets>{tweets} TWEETS</StyledTweets>
-      <StyledFollowers>{followers} FOLLOWERS</StyledFollowers>
+      <StyledFollowers>{formattedFollowers} FOLLOWERS</StyledFollowers>
       <Button
         children={subscription ? "FOLLOWING" : "FOLLOW"}
         style={{
@@ -43,9 +63,7 @@ const UserItem: React.FC<User> = ({
           marginRight: "auto",
           background: subscription ? "#5CD3A8" : "#EBD8FF",
         }}
-        onClick={() =>
-          dispatch(updateUserById({ id, subscription, followers }))
-        }
+        onClick={handleFollowClick}
       />
     </StyledBox>
   );
