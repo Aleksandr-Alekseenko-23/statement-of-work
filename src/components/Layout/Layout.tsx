@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Loader from "../Common/Loader/Loader";
-import { BoxStyled, Wrapper, Main } from "./Layout.styled";
+import { Wrapper, Main } from "./Layout.styled";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -11,9 +11,7 @@ const Layout: React.FC = () => {
       <Header />
       <Suspense fallback={<Loader />}>
         <Main>
-          <BoxStyled as={"section"}>
-            <Outlet />
-          </BoxStyled>
+          <Outlet />
         </Main>
         <Footer />
       </Suspense>

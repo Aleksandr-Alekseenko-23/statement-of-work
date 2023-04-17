@@ -1,9 +1,10 @@
 import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User, UserState } from "../utils/types/types";
+import { User, Filter, UserState } from "../utils/types/types";
 import { fetchUsers, updateUserById } from "./operations";
 
 const initialState: UserState = {
   users: [] as User[],
+  filter: "all",
   isLoading: false,
   error: null,
   page: 0,
@@ -14,13 +15,8 @@ export const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    updateUser(state, action: PayloadAction<User>) {
-      const index = state.users.findIndex(
-        (user) => user.id === action.payload.id
-      );
-      if (index !== -1) {
-        state.users[index] = action.payload;
-      }
+    filterUsersByStatusSubscription(state, action: PayloadAction<Filter>) {
+      state.filter = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -53,6 +49,8 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+
+export const { filterUsersByStatusSubscription } = userSlice.actions;
 
 function isError(action: AnyAction) {
   return action.type.endsWith("rejected");

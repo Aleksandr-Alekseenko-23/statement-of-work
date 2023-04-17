@@ -73,6 +73,41 @@ const GlobalStyles = createGlobalStyle`
     .react-date-picker.react-date-picker--closed.react-date-picker--enabled,.react-date-picker.react-date-picker--open.react-date-picker--enabled{
       display: block;
     }
+
+.Logo {
+  fill: #ebd8ff;
+  width: 20px;
+  height: 20px;
+
+  transition-property: background-color, fill;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+
+  transition-property: background-color, fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Link:hover .Logo,
+.Link:focus .Logo {
+  background-color: rgb(92, 211, 168);
+  fill:#ebd8ff;
+}
+
+.Link:hover,
+.Link:focus {
+  background-color: rgb(92, 211, 168);
+}
 `;
 
 export default GlobalStyles;

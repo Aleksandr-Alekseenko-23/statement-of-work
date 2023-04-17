@@ -11,6 +11,5 @@ export const Wrapper = styled(Box)`
 
 export const Main = styled.main`
   flex: 1 1 auto;
-  padding-bottom: 30px;
-  margin-top: 100px;
+  background-color: #fdf7f2;
 `;

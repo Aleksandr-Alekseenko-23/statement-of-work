@@ -7,8 +7,11 @@ export interface User {
   subscription: boolean;
 }
 
+export type Filter = "all" | "follow" | "following";
+
 export interface UserState {
   users: User[];
+  filter: Filter;
   isLoading: boolean;
   error: string | null;
   page: number;

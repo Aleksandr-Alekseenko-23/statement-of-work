@@ -59,6 +59,7 @@ function TweetsPage() {
                   marginLeft: "auto",
                   marginRight: "auto",
                   marginTop: "20px",
+                  marginBottom: "20px",
                 }}
               />
             )}

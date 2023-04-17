@@ -1,40 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 // import ButtonGroup from "@material-ui/core/ButtonGroup";
 // import Button from "@material-ui/core/Button";
+// import { useAppDispatch, useAppSelector } from "../../redux/hook";
+// import { filterUsersByStatusSubscription } from "../../redux/slice"
+// import { Filter } from "../../utils/types/types";
+// import { selectFilterUsers } from "../../redux/selectors";
 
-// const FilterSubscription = ({ handleFilter }) => {
-//   const [filterType, setFilterType] = useState("all");
+// const FilterSubscription: React.FC = () => {
+//     const dispatch = useAppDispatch();
 
-//   const handleButtonClick = (event) => {
-//     const newFilterType = event.currentTarget.value;
-//     setFilterType(newFilterType);
-//     handleFilter(newFilterType);
-//   };
+//     const filter = useAppSelector(selectFilterUsers)
+
+//   const handleFilterChange = ({ target: { value } }: React.ChangeEvent<{ value: string }>) => {
+//   const filterValue = value as Filter;
+
+//   dispatch(filterUsersByStatusSubscription(filterValue));
+//     };
 
 //   return (
-//     <ButtonGroup color="primary">
+//     <ButtonGroup>
 //       <Button
-//         variant={filterType === "all" ? "contained" : "outlined"}
-//         value="all"
-//         onClick={handleButtonClick}
+//         onClick={() => handleFilterChange("all")}
+//         color={filter === "all" ? "primary" : "default"}
 //       >
-//         Show all
+//         All
 //       </Button>
 //       <Button
-//         variant={filterType === "follow" ? "contained" : "outlined"}
-//         value="follow"
-//         onClick={handleButtonClick}
+//         onClick={() => handleFilterChange("follow")}
+//         color={filter === "follow" ? "primary" : "default"}
 //       >
 //         Follow
 //       </Button>
 //       <Button
-//         variant={filterType === "following" ? "contained" : "outlined"}
-//         value="following"
-//         onClick={handleButtonClick}
+//         onClick={() => handleFilterChange("following")}
+//         color={filter === "following" ? "primary" : "default"}
 //       >
 //         Following
 //       </Button>
 //     </ButtonGroup>
 //   );
 
-// export default FilterSubscription;
+//  export default FilterSubscription;
