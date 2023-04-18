@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "build/dist",
+    "outDir": "dist",
     "rootDir": "src"
   },
   "include": ["src", "index.d.ts"],
