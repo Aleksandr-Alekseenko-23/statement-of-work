@@ -11,5 +11,6 @@ export const Wrapper = styled(Box)`
 
 export const Main = styled.main`
   flex: 1 1 auto;
+  height: 100%;
   background-color: #fdf7f2;
 `;
