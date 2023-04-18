@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://Aleksandr-Alekseenko-23.github.io/statement-of-work/",
+  "homepage": "https://aleksandr-alekseenko-23.github.io/statement-of-work/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
