@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <>
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persistor}>
-        <BrowserRouter basename="statement-of-work">
+        <BrowserRouter basename="/statement-of-work">
           <App />
         </BrowserRouter>
       </PersistGate>
