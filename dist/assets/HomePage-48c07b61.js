@@ -1,4 +1,4 @@
-import{s as e,j as t,F as o,a as n}from"./index-75dfd4f6.js";const s=e.span`
+import{s as e,j as t,F as o,a as n}from"./index-14794d60.js";const s=e.span`
   position: absolute;
   top: 150px;
   left: 385px;
@@ -16,4 +16,4 @@ import{s as e,j as t,F as o,a as n}from"./index-75dfd4f6.js";const s=e.span`
   display: flex;
   justify-content: center;
   align-items: center;
-`,c="/assets/background-dbb96f5e.jpg",l=()=>t(o,{children:n(a,{children:[t(s,{children:" Your homemade twitter"}),t(r,{src:c})]})});export{l as default};
+`,c="/statement-of-work/assets/background-dbb96f5e.jpg",l=()=>t(o,{children:n(a,{children:[t(s,{children:" Your homemade twitter"}),t(r,{src:c})]})});export{l as default};
